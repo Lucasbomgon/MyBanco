@@ -1,0 +1,6 @@
+@MyBanco_HostAddress = http://localhost:5045
+
+GET {{MyBanco_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
