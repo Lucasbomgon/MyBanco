@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MyBanco.Infra;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ var app = builder.Build();
 
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 46));
-builder.Services.AddDbContext<ApplicationBuilder>(options => 
+builder.Services.AddDbContext<ApplicationDbContext>(options => 
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), serverVersion));
 
 var connectionString = app.Configuration.GetConnectionString("DefaultConnection");
