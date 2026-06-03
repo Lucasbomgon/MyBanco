@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MyBanco.Infra;
+using MyBanco.Infra.Repository.Carteiras;
+using MyBanco.Infra.Repository.Transferencias;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,15 +12,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 46));
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), serverVersion));
 
-var connectionString = app.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
+builder.Services.AddScoped<ITransferenciaRepository, TransferenciaRepository>();
 
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

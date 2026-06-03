@@ -12,7 +12,6 @@ public class TransferenciaEntity
     
     public decimal Valor  { get; set; } 
     
-    
     public TransferenciaEntity(int  senderId, int receiverId, decimal valor)
     {   
         IdTransferencia = Guid.NewGuid();

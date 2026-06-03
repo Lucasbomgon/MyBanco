@@ -22,7 +22,7 @@ public class CarteiraRepository : ICarteiraRepository
         _Context.Update(carteira);
     }
 
-    public async Task<CarteiraEntity?> GetByIdAsync(string cpfCnpj, string email)
+    public async Task<CarteiraEntity?> GetByCpfCnpj(string cpfCnpj, string email)
     {
         return await _Context.Wallets.FirstOrDefaultAsync(wallet => 
             wallet.CPFCNPJ.Equals(cpfCnpj) || wallet.Email.Equals(email));

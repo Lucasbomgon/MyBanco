@@ -19,6 +19,8 @@ public class CarteiraEntity
     
     public UserType UserType { get; set; }
 
+    private CarteiraEntity(){}
+
     public CarteiraEntity(String nomeCompleto, String cPFCBNPJ, String email, String senha, UserType userType, decimal saldoConta)
     {
         NomeCompleto = nomeCompleto;
