@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using MyBanco.Models.Enum;
+using MyBanco.Utils;
 
 namespace MyBanco.Models.Request;
 
