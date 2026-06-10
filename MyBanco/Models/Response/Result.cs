@@ -8,12 +8,12 @@ public class Result<T>
     
     public T Value { get; private set; }
 
-    public Result(bool IsSuccesse, T value, string errorMessage)
+    private Result(bool IsSuccesse, T value, string errorMessage)
     {
         IsSuccess = IsSuccesse;
         Value =  value;
         ErrorMessage = errorMessage;
-    }
+    }   
 
     private Result(bool isSuccess)
     {
@@ -22,4 +22,9 @@ public class Result<T>
     
     public static Result<T> Success(T value) => new Result<T>(true, value, string.Empty);
     public static Result<T> Failure(T value, string errorMessage) => new Result<T>(false, value, errorMessage);
+
+    public static Result<bool> Failure(string carteiraJaExiste)
+    {
+        throw new NotImplementedException();
+    }
 }

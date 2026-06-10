@@ -7,8 +7,12 @@ namespace MyBanco.Models.Request;
 
 public class CarteiraRequest
 {
+    
+    [Required(ErrorMessage = "O nomeCompleto é obrigatorio")]
+    public string NomeCompleto { get; set; }
+    
     [Required(ErrorMessage = "O CPF ou CNPJ é obrigatorio.")]
-    [CpfCnpjValidation(Error = "O CPF ou CNPJ informado é invalida.")]
+    [CpfCnpjValidation(ErrorMessage = "O CPF ou CNPJ informado é invalida.")]
     public string CPFCNPJ { get; set; }
     
     [Required(ErrorMessage = "O email é  obrigatorio.")]
@@ -20,7 +24,8 @@ public class CarteiraRequest
     
     [Required(ErrorMessage = "O tipo do usuario e obrigatorio.")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public UserType UserType { get; set; }    
-    
-    
+    public UserType UserType { get; set; }
+
+    [Required(ErrorMessage = "O Saldo em conta e obrigatorio.")]
+    public decimal SaldoConta { get; set; }
 }

@@ -15,10 +15,4 @@ public class CpfCnpjValidationAttribute : ValidationAttribute
         
         return  ValidationResult.Success;
     }
-
-    public string Error
-    {
-        get => throw new NotImplementedException();
-        set => throw new NotImplementedException();
-    }
 }

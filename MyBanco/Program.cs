@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using MyBanco.Infra;
 using MyBanco.Infra.Repository.Carteiras;
 using MyBanco.Infra.Repository.Transferencias;
+using MyBanco.Models;
+using MyBanco.Services.Carteiras;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
 builder.Services.AddScoped<ITransferenciaRepository, TransferenciaRepository>();
+builder.Services.AddScoped<ICarteiraService, CarteiraService>(); 
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
