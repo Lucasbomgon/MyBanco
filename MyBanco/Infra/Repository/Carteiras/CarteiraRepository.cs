@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MyBanco.Models;
 
 namespace MyBanco.Infra.Repository.Carteiras;
@@ -28,9 +28,9 @@ public class CarteiraRepository : ICarteiraRepository
             wallet.CPFCNPJ.Equals(cpfCnpj) || wallet.Email.Equals(email));
     }
 
-    public async Task<CarteiraEntity?> GetById(int id)
+    public async Task<CarteiraEntity?> GetById(int id) // 
     {
-        return await _Context.Wallets.FindAsync();
+        return await _Context.Wallets.FindAsync(id);
     }
 
     public async Task CommitAsync()

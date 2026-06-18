@@ -3,28 +3,23 @@
 public class Result<T>
 {
     public bool IsSuccess { get; set; }
-    
-    public string ErrorMessage { get; set; }
-    
+
+    public string ErrorMessage { get; private set; }
+
     public T Value { get; private set; }
 
-    private Result(bool IsSuccesse, T value, string errorMessage)
-    {
-        IsSuccess = IsSuccesse;
-        Value =  value;
-        ErrorMessage = errorMessage;
-    }   
-
-    private Result(bool isSuccess)
+    private Result(bool isSuccess, T value, string errorMessage)
     {
         IsSuccess = isSuccess;
+        Value = value;
+        ErrorMessage = errorMessage;
     }
-    
-    public static Result<T> Success(T value) => new Result<T>(true, value, string.Empty);
-    public static Result<T> Failure(T value, string errorMessage) => new Result<T>(false, value, errorMessage);
 
-    public static Result<bool> Failure(string carteiraJaExiste)
-    {
-        throw new NotImplementedException();
+    private Result(bool isSuccess)
+    {   
+        IsSuccess = isSuccess;
     }
+
+    public static Result<T> Success(T value) => new Result<T>(true, value, null);
+    public static Result<T> Failure(string errorMessage) => new Result<T>(false, default, errorMessage);
 }

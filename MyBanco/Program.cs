@@ -3,7 +3,10 @@ using MyBanco.Infra;
 using MyBanco.Infra.Repository.Carteiras;
 using MyBanco.Infra.Repository.Transferencias;
 using MyBanco.Models;
+using MyBanco.Services.Autorizador;
 using MyBanco.Services.Carteiras;
+using MyBanco.Services.Notificacao;
+using MyBanco.Services.Transferencias;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +24,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
 builder.Services.AddScoped<ITransferenciaRepository, TransferenciaRepository>();
-builder.Services.AddScoped<ICarteiraService, CarteiraService>(); 
+builder.Services.AddScoped<ICarteiraService, CarteiraService>();
+
+builder.Services.AddHttpClient<IAutorizadorService, AutorizadorService>();
+builder.Services.AddScoped<INotificacaoService, NotificacaoService>();
+builder.Services.AddScoped<ITransferenciaService, TransferenciaService>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
